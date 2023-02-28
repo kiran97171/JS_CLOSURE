@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <h1 style="text-align: center; color: brown; font-size: x-large;">CLOSURE</h1>
+    <pre>Que1 : function counter(){
+        var counter = 0;
+    
+        function IncreaseCounter() {
+            return counter += 1;
+        };
+    
+        return IncreaseCounter;
+    }
+    
+    var counter = counter();
+    alert(counter());
+    alert(counter());
+    alert(counter());
+    alert(counter());</pre>
+    <p>Ans:</p>
+    <pre>
+        1
+        2
+        3
+        4
+        Explanation:The value of outer function is counter 0 and its returns innerfunction that is IncreaseCounter
+        therefore in every count of the outerfunction will be increase by 1.
+    </pre>
+    <br>
+    <pre>Que 2 : let count = 0;
+        (function () {
+          if (count === 0) {
+            let count = 1;
+            console.log(count); // What is logged?
+          }
+          console.log(count); // What is logged?
+        })();</pre>
+    <p>Ans:</p>
+    <pre>
+        1
+        0
+         Explanation :The given value of count is 0 in the if statement the count value will 1 and the first log the first log statement will print the count that
+        is 1 in this case.But the given value of count still remains the same that is 0 therefore the second log statement
+        will print 0.
+    </pre>
+    <br>
+    <pre>Que 3 : "for (var i = 0; i < 3; i++) {
+        setTimeout(function log() {
+          console.log(i); // What is logged?
+        }, 1000);
+      }"</pre>
+    <p>Ans:</p>
+    <pre>
+        3
+        3
+        3
+        Explanation : Loop will run for 3 times and the value of i is 3 the condition is false therefore
+        console.log will print 3 and the value of setTimeout will be 3 as the loop will run 3 times the output
+        will be 3 times 3.
+    </pre>
+    <br>
+    <pre>Que 4 : Write a code to calculate area of a rectangle using inner function. In this case outer function should accept parameter length and inner function should accept parameter breadth.</pre>
+    <p>Ans:</p>
+    <pre>function outerfunction(length){
+        function innerfunction(breadth){
+          return length*breadth;
+        }
+        return innerfunction;
+      }
+      const length=3;
+      const breadth=6;
+      let area=outerfunction(length)(breadth);
+      console.log(area);</pre>
+    <br>
+    <pre>Que5 : Take a variable in outer function and create an inner function to increase the counter every time it is called</pre>
+    <p>Ans:</p>
+    <pre>function outerfunction(x){
+        function innerfunction(counter){
+          return counter=counter+1;
+        }
+        return innerfunction;
+      }
+      let x=6;
+      let counter=0;
+      let count=outerfunction(x)(counter);
+      console.log(count);</pre>
+    <br>
+    <pre>Que 6 : Print Output
+        var a = 10;
+        (function () {
+          alert(a);
+        })();</pre>
+    <p>Answer:</p>
+    <pre>
+        10
+    </pre>
+    <br>
+    <pre>Que 7 : var a = 12;
+        var x = (function () {
+          var a = 12;
+          return function () {
+            alert(a);
+          };
+        })();
+        x();</pre>
+    <p>Ans:</p>
+    <pre>
+        12
+        Explanation : The variable x is assigned an immediately invoked function expression (IIFE) and inside the IIFE there is 
+        another anonymous function which logs the value of variable a.When the IIFE function is called the current value
+         of the anonymous function that is 12 as var a = 12 gets stored in the variable x and therefore the output is 12.  
+    </pre>
+    <br>
+    <pre>Que 8 : var globalVar = ""xyz"";
+
+        (function outerFunc(outerArg) {
+            var outerVar = 'a';
+            
+            (function innerFunc(innerArg) {
+            var innerVar = 'b';
+            
+            console.log(
+                ""outerArg = "" + outerArg + ""\n"" +
+                ""innerArg = "" + innerArg + ""\n"" +
+                ""outerVar = "" + outerVar + ""\n"" +
+                ""innerVar = "" + innerVar + ""\n"" +
+                ""globalVar = "" + globalVar);
+            
+            })(456);
+        })(123);</pre>
+    <p>Ans:</p>
+    <pre>
+        outerArg = 123
+        innerArg = 456
+        outerVar = a
+        innerVar = b
+        globalVar = xyz
+        Explanation : 
+        The outerArg corresponds to the outerfunction outerFunc() which has the parameter 123 therefore 123 is logged for outerArg
+         The innerArg corresponds to the innerfunction innerFunc() which has the parameter 456 therefore 456 is logged for innerArg
+         The outerVar corresponds to the variable outerVar which has the value 'a' therefore a is logged for outerVar
+         The innerVar corresponds to the variable innerVar which has the value 'b' therefore b is logged for innerVar
+         The globalVar corresponds to the variable globalVar which has the value 'xyz' therefore xyz is logged for globalVar
+    </pre>
+    <br>
+</body>
+</html>
